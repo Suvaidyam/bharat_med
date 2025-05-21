@@ -1,3 +1,4 @@
+
 app_name = "bharat_med"
 app_title = "Bharat Med"
 app_publisher = "Ajamat"
@@ -237,3 +238,5 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+website_route_rules = [{'from_route': '/frontend/<path:app_path>', 'to_route': 'frontend'},]
