@@ -137,6 +137,8 @@
 				</div>
 			</div>
 		</footer>
+		<!-- <Register /> -->
+		<FAQs />
 	</div>
 </template>
 
@@ -144,6 +146,8 @@
 import Navbar from '../components/Navbar.vue'
 
 import { MessageCircle, PlusSquare, Shield } from 'lucide-vue-next'
+import FAQs from './FAQs.vue'
+// import Register from './Register.vue'
 
 const features = [
 	{
