@@ -54,7 +54,7 @@
 					/>
 				</div>
 
-				<!-- <div class="mb-6">
+				<div class="mb-6">
 					<label class="block text-gray-700 font-medium mb-1">Role</label>
 					<select
 						v-model="role"
@@ -65,7 +65,7 @@
 						<option value="Doctor">Doctor</option>
 						<option value="Patient">Patient</option>
 					</select>
-				</div> -->
+				</div>
 
 				<button
 					type="submit"
@@ -191,6 +191,7 @@ const email = ref('')
 const mobile = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const role = ref('')
 
 const register = async () => {
 	if (password.value !== confirmPassword.value) {
@@ -212,6 +213,7 @@ const register = async () => {
 					mobile: mobile.value,
 					password: password.value,
 					confirm_password: confirmPassword.value,
+					role_profile: role.value,
 				}),
 			},
 		)
@@ -226,6 +228,7 @@ const register = async () => {
 			mobile.value = ''
 			password.value = ''
 			confirmPassword.value = ''
+			role.value = ''
 		} else {
 			alert(`Error: ${data.error || 'Something went wrong'}`)
 		}

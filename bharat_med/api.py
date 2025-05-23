@@ -55,7 +55,7 @@ import frappe
 from frappe import _
 
 @frappe.whitelist(allow_guest=True)
-def register_user(first_name, email, mobile, password, confirm_password):
+def register_user(first_name, email, mobile, password, confirm_password,role_profile):
     try:
         if password != confirm_password:
             return {"error": "Passwords do not match."}
@@ -67,6 +67,7 @@ def register_user(first_name, email, mobile, password, confirm_password):
             "mobile_number": mobile,
             "password": password,
             "confirm_password": confirm_password,
+            "role_profile": role_profile
         })
 
         user.insert(ignore_permissions=True, ignore_mandatory=True)
