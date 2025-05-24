@@ -17,7 +17,7 @@
 		</div>
 		<div class="flex items-center space-x-4">
 			<!-- Language Dropdown -->
-			<div class="relative">
+			<!-- <div class="relative">
 				<button
 					@click="toggleDropdown"
 					class="bg-white text-black px-3 py-1 rounded-md text-sm flex items-center"
@@ -39,33 +39,71 @@
 					<a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">FR</a>
 					<a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">ES</a>
 				</div>
+			</div> -->
+			<!-- Language Dropdown -->
+			<div class="">
+				<Dropdown
+					:options="[
+						{
+							label: 'EN',
+							onClick: () => {},
+						},
+						{
+							label: 'FR',
+							onClick: () => {},
+						},
+						{
+							label: 'ES',
+							onClick: () => {},
+						},
+					]"
+					:button="{
+						label: 'EN',
+					}"
+				/>
 			</div>
+
 			<!-- Login Dropdown -->
-			<div class="relative mr-4">
-				<button
-					@click="toggleLoginDropdown"
-					class="bg-white text-black px-3 py-1 rounded-md text-sm flex items-center"
-				>
-					Register
-					<svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</button>
-				<div
-					v-if="showLoginDropdown"
-					class="absolute right-0 mt-2 w-40 bg-white text-black rounded shadow-lg z-10"
-				>
-					<a href="/register" class="block px-4 py-2 text-sm hover:bg-gray-100"
-						>Doctor Register</a
-					>
-					<a href="/register" class="block px-4 py-2 text-sm hover:bg-gray-100"
-						>Patient Register</a
-					>
-				</div>
+			<div class="" v-if="session.isLoggedIn">
+				<Dropdown
+					:options="[
+						{
+							label: 'Profile',
+							onClick: () => {},
+						},
+						{
+							label: 'Logout',
+							onClick: () => {
+								session.logout.submit()
+							},
+						},
+					]"
+					:button="{
+						label: session.user?.charAt(0).toUpperCase(),
+					}"
+				/>
+			</div>
+			<div class="" v-else>
+				<Dropdown
+					:options="[
+						{
+							label: 'Login Doctor',
+							onClick: () => {
+								console.log('Doctor Login')
+								router.push('/login')
+							},
+						},
+						{
+							label: 'Login Patient',
+							onClick: () => {
+								router.push('/login')
+							},
+						},
+					]"
+					:button="{
+						label: 'Login',
+					}"
+				/>
 			</div>
 		</div>
 
@@ -84,7 +122,9 @@
 		<!-- Mobile Links -->
 		<div
 			v-if="mobileOpen"
-			class="absolute top-16 left-0 w-full bg-[#001f3f] text-white p-4 md:hidden z-20"
+			class="absolute top-13 left-0 w-full bg-[#001f3f] text-white p-4 md:hidden z-20 flex flex-col"
+			@click="toggleMobile"
+			@click.stop
 		>
 			<a href="#" class="hover:text-gray-300">Home</a>
 			<a href="#" class="hover:text-gray-300">About Us</a>
@@ -95,13 +135,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const showLoginDropdown = ref(false)
-
-const toggleLoginDropdown = () => {
-	showLoginDropdown.value = !showLoginDropdown.value
-}
+import { ref, inject } from 'vue'
+import { useRouter } from 'vue-router'
+import { Dropdown } from 'frappe-ui'
+const session = inject('$session')
+const router = useRouter()
 
 const showDropdown = ref(false)
 const mobileOpen = ref(false)

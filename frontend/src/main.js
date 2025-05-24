@@ -3,6 +3,7 @@ import './index.css'
 import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
+import { session } from './data/session'
 
 import {
   Button,
@@ -17,6 +18,7 @@ let app = createApp(App)
 
 setConfig('resourceFetcher', frappeRequest)
 
+app.provide('$session', session)
 app.use(router)
 app.use(resourcesPlugin)
 

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { session } from './data/session'
 import { userResource } from '@/data/user'
 
+
 const routes = [
   {
     path: '/',
@@ -10,7 +11,7 @@ const routes = [
   },
   {
     name: 'Login',
-    path: '/account/login',
+    path: '/login',
     component: () => import('@/pages/Login.vue'),
   },
   {
@@ -22,7 +23,21 @@ const routes = [
     name: 'FAQs',
     path: '/faqs',
     component: () => import('@/pages/FAQs.vue'),
-  }
+  },
+  {
+    name:'Dashboard',
+    path: '/dashboard',
+    component: () => import('@/pages/Dashboard.vue'),
+  },{
+    name: 'Patient',
+    path: '/patient',
+    component: () => import('@/pages/Patient.vue'),
+  },
+  // {
+  //   name: 'Test',
+  //   path: '/test',
+  //   component: () => import('@/pages/Test.vue'),
+  // }
 ]
 
 let router = createRouter({
@@ -37,11 +52,12 @@ router.beforeEach(async (to, from, next) => {
   } catch (error) {
     isLoggedIn = false
   }
-
+  console.log(to.name,'to.name');
+  
   if (to.name === 'Login' && isLoggedIn) {
     next({ name: 'Home' })
   } else if (to.name !== 'Login' && !isLoggedIn) {
-    next({ name: 'Login' })
+    next()
   } else {
     next()
   }

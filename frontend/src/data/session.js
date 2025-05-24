@@ -26,7 +26,10 @@ export const session = reactive({
       userResource.reload()
       session.user = sessionUser()
       session.login.reset()
-      router.replace(data.default_route || '/')
+      // router.replace(data.default_route || '/')
+      // I want to redirect after login to the dashboard page
+      router.replace(data.default_route || '/patient')
+
     },
   }),
   logout: createResource({
@@ -34,7 +37,7 @@ export const session = reactive({
     onSuccess() {
       userResource.reset()
       session.user = sessionUser()
-      router.replace({ name: 'Login' })
+      router.replace({ name: 'Home' })
     },
   }),
   user: sessionUser(),

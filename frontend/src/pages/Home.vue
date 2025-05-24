@@ -139,6 +139,8 @@
 		</footer>
 		<!-- <Register /> -->
 		<!-- <FAQs /> -->
+		<!-- <Dashboard /> -->
+		<!-- <Patient /> -->
 	</div>
 </template>
 
@@ -146,6 +148,8 @@
 import Navbar from '../components/Navbar.vue'
 
 import { MessageCircle, PlusSquare, Shield } from 'lucide-vue-next'
+// import Patient from './Patient.vue'
+// import Dashboard from './Dashboard.vue'
 // import FAQs from './FAQs.vue'
 // import Register from './Register.vue'
 
