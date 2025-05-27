@@ -74,6 +74,8 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 const firstName = ref('')
 const email = ref('')
 const mobile = ref('')
@@ -83,7 +85,7 @@ const role = ref('')
 const router = useRouter()
 const register = async () => {
 	if (password.value !== confirmPassword.value) {
-		alert('Passwords do not match.')
+		toast.error('Passwords do not match.', { autoClose: 5000 })
 		return
 	}
 
@@ -110,19 +112,22 @@ const register = async () => {
 		console.log(data)
 
 		if (response.ok && data.message) {
-			alert(data.message)
+			toast.success('Registration successful! Please log in.', { autoClose: 5000 })
+
 			firstName.value = ''
 			email.value = ''
 			mobile.value = ''
 			password.value = ''
 			confirmPassword.value = ''
 			role.value = ''
+			setTimeout(() => {
+				router.push('/login')
+			}, 50000)
 		} else {
-			alert(`Error: ${data.error || 'Something went wrong'}`)
+			toast.error(`Error: ${data.error || 'Something went wrong'}`, { autoClose: 5000 })
 		}
 	} catch (error) {
-		alert(`Error: ${error.message}`)
+		toast.error(`Error: ${error.message}`, { autoClose: 5000 })
 	}
-	router.push('/login')
 }
 </script>
