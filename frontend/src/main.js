@@ -3,7 +3,8 @@ import './index.css'
 import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
-import { session } from './data/session'
+import { session } from './Service/auth.js'
+
 
 import {
   Button,
@@ -17,6 +18,15 @@ import {
 let app = createApp(App)
 
 setConfig('resourceFetcher', frappeRequest)
+// app.use(Vue3Toastify, {
+//   position: 'top-right',
+//   autoClose: 5000,
+//   hideProgressBar: false,
+//   closeOnClick: true,
+//   pauseOnHover: true,
+//   draggable: true,
+// })
+
 
 app.provide('$session', session)
 app.use(router)

@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { session } from '../data/session'
+import { session } from '../Service/auth.js'
 
 function submit(e) {
 	let formData = new FormData(e.target)

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { session } from './data/session'
-import { userResource } from '@/data/user'
+import { session } from './Service/auth.js'
+import { userResource } from '@/Service/user.js'
 
 
 const routes = [
@@ -33,6 +33,11 @@ const routes = [
     path: '/patient',
     component: () => import('@/pages/Patient.vue'),
   },
+  {
+    name: 'Design',
+    path: '/design',
+    component: () => import('@/pages/Design.vue'),
+  }
   // {
   //   name: 'Test',
   //   path: '/test',
