@@ -1,25 +1,33 @@
 <template>
 	<div class="flex h-screen bg-gray-50">
 		<!-- Sidebar -->
-		<div class="w-64 bg-white shadow-lg">
+		<div
+			:class="[
+				'bg-white shadow-lg transition-all duration-300 ease-in-out',
+				sidebarCollapsed ? 'w-5 md:w-16' : 'w-64', // Changed w-16 to w-5 for mobile (20px)
+				'md:w-64 md:static',
+				'fixed md:relative z-50 h-full',
+			]"
+		>
+			<!-- Logo -->
 			<!-- Logo -->
 			<div class="flex items-center px-6 py-4 border-b">
 				<div class="flex items-center">
-					<!-- <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-						<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-							<path
-								fill-rule="evenodd"
-								d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-					</div> -->
-					<span class="ml-3 text-xl font-semibold text-gray-800">Suvaidyam</span>
+					<span
+						@click="toggleSidebar"
+						:class="[
+							'text-xl font-semibold text-gray-800 cursor-pointer hover:text-blue-600 transition-colors',
+							sidebarCollapsed ? 'hidden md:block' : 'block',
+						]"
+					>
+						Suvaidyam
+					</span>
+					<!-- Keep existing hamburger button unchanged -->
 				</div>
 			</div>
 
 			<!-- Navigation -->
-			<nav class="mt-6 px-4">
+			<nav class="mt-6 px-4" :class="sidebarCollapsed ? 'hidden md:block' : 'block'">
 				<!-- Dashboard Section -->
 				<div class="mb-2">
 					<button
@@ -48,16 +56,6 @@
 						</svg>
 					</button>
 					<div v-show="expandedMenus.dashboard" class="ml-6 mt-2 space-y-1">
-						<!-- <a
-							href="#"
-							class="block px-3 py-2 text-sm text-blue-600 bg-blue-50 rounded-lg"
-							>Admin Dashboard</a
-						> -->
-						<!-- <a
-							href="#"
-							class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
-							>Doctor Dashboard</a
-						> -->
 						<a
 							href="#"
 							class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg"
@@ -90,16 +88,51 @@
 			</nav>
 		</div>
 
+		<!-- Overlay for mobile when sidebar is open -->
+		<div
+			v-if="!sidebarCollapsed"
+			@click="toggleSidebar"
+			class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+		></div>
+
 		<!-- Main Content -->
-		<div class="flex-1 flex flex-col overflow-hidden">
+		<div
+			:class="[
+				'flex-1 flex flex-col overflow-hidden transition-all duration-300',
+				'md:ml-0',
+			]"
+		>
 			<!-- Top Header -->
 			<header class="bg-white shadow-sm border-b px-6 py-4">
 				<div class="flex items-center justify-between">
-					<div>
-						<h1 class="text-2xl font-bold text-gray-900">Welcome back, Vrindarak</h1>
-						<p class="text-gray-600 text-sm">
-							Your health dashboard - manage your care all in one place
-						</p>
+					<div class="flex items-center">
+						<!-- Mobile menu button -->
+						<button
+							@click="toggleSidebar"
+							class="mr-4 md:hidden text-gray-600 hover:text-gray-900"
+						>
+							<svg
+								class="w-6 h-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 6h16M4 12h16M4 18h16"
+								/>
+							</svg>
+						</button>
+						<div>
+							<h1 class="text-2xl font-bold text-gray-900">
+								Welcome back, Vrindarak
+							</h1>
+							<p class="text-gray-600 text-sm">
+								Your health dashboard - manage your care all in one place
+							</p>
+						</div>
 					</div>
 					<div class="flex items-center space-x-4">
 						<button
@@ -116,7 +149,9 @@
 									clip-rule="evenodd"
 								/>
 							</svg>
-							<span class="text-sm text-gray-700">Message Doctor</span>
+							<span class="text-sm text-gray-700 hidden sm:inline"
+								>Message Doctor</span
+							>
 						</button>
 						<button
 							class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -128,7 +163,7 @@
 									clip-rule="evenodd"
 								/>
 							</svg>
-							<span class="text-sm">Book Appointment</span>
+							<span class="text-sm hidden sm:inline">Book Appointment</span>
 						</button>
 						<div class="flex items-center space-x-2">
 							<svg
@@ -140,32 +175,52 @@
 									d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
 								/>
 							</svg>
-							<span
-								class="text-sm font-medium text-gray-700 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"
-								>V</span
-							>
+							<!-- Login Dropdown -->
+							<div class="" v-if="session.isLoggedIn">
+								<Dropdown
+									:options="[
+										{
+											label: 'Profile',
+											onClick: () => {},
+										},
+										{
+											label: 'Logout',
+											onClick: () => {
+												session.logout.submit()
+											},
+										},
+									]"
+									:button="{
+										label: session.user?.charAt(0).toUpperCase(),
+									}"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</header>
 
 			<!-- Dashboard Content -->
-			<main class="flex-1 overflow-y-auto p-6">
+			<main class="flex-1 overflow-y-auto p-4 md:p-6">
 				<!-- Stats Cards -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8"
+				>
 					<!-- Next Appointment -->
-					<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
+					<div
+						class="bg-white rounded-lg shadow-sm p-4 md:p-6 border-l-4 border-blue-500"
+					>
 						<div class="flex items-center justify-between">
 							<div>
 								<p class="text-sm text-gray-600 mb-1">Next Appointment</p>
-								<p class="text-2xl font-bold text-gray-900">Tomorrow</p>
+								<p class="text-xl md:text-2xl font-bold text-gray-900">Tomorrow</p>
 								<p class="text-xs text-gray-500">10:30 AM with Dr. Johnson</p>
 								<button class="text-blue-600 text-sm hover:underline mt-2">
 									View details >
 								</button>
 							</div>
 							<svg
-								class="w-8 h-8 text-blue-500"
+								class="w-6 h-6 md:w-8 md:h-8 text-blue-500"
 								fill="currentColor"
 								viewBox="0 0 20 20"
 							>
@@ -179,18 +234,20 @@
 					</div>
 
 					<!-- Medications -->
-					<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
+					<div
+						class="bg-white rounded-lg shadow-sm p-4 md:p-6 border-l-4 border-green-500"
+					>
 						<div class="flex items-center justify-between">
 							<div>
 								<p class="text-sm text-gray-600 mb-1">Medications</p>
-								<p class="text-2xl font-bold text-gray-900">3 Active</p>
+								<p class="text-xl md:text-2xl font-bold text-gray-900">3 Active</p>
 								<p class="text-xs text-gray-500">Next dose in 2 hours</p>
 								<button class="text-green-600 text-sm hover:underline mt-2">
 									View all medications >
 								</button>
 							</div>
 							<svg
-								class="w-8 h-8 text-green-500"
+								class="w-6 h-6 md:w-8 md:h-8 text-green-500"
 								fill="currentColor"
 								viewBox="0 0 20 20"
 							>
@@ -200,18 +257,20 @@
 					</div>
 
 					<!-- Test Results -->
-					<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-purple-500">
+					<div
+						class="bg-white rounded-lg shadow-sm p-4 md:p-6 border-l-4 border-purple-500"
+					>
 						<div class="flex items-center justify-between">
 							<div>
 								<p class="text-sm text-gray-600 mb-1">Test Results</p>
-								<p class="text-2xl font-bold text-gray-900">2 New</p>
+								<p class="text-xl md:text-2xl font-bold text-gray-900">2 New</p>
 								<p class="text-xs text-gray-500">Blood work from 05/12</p>
 								<button class="text-purple-600 text-sm hover:underline mt-2">
 									View results >
 								</button>
 							</div>
 							<svg
-								class="w-8 h-8 text-purple-500"
+								class="w-6 h-6 md:w-8 md:h-8 text-purple-500"
 								fill="currentColor"
 								viewBox="0 0 20 20"
 							>
@@ -225,18 +284,20 @@
 					</div>
 
 					<!-- Billing -->
-					<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-red-500">
+					<div
+						class="bg-white rounded-lg shadow-sm p-4 md:p-6 border-l-4 border-red-500"
+					>
 						<div class="flex items-center justify-between">
 							<div>
 								<p class="text-sm text-gray-600 mb-1">Billing</p>
-								<p class="text-2xl font-bold text-gray-900">$45.00</p>
+								<p class="text-xl md:text-2xl font-bold text-gray-900">$45.00</p>
 								<p class="text-xs text-gray-500">Due in 15 days</p>
 								<button class="text-red-600 text-sm hover:underline mt-2">
 									Make payment >
 								</button>
 							</div>
 							<svg
-								class="w-8 h-8 text-red-500"
+								class="w-6 h-6 md:w-8 md:h-8 text-red-500"
 								fill="currentColor"
 								viewBox="0 0 20 20"
 							>
@@ -255,7 +316,7 @@
 
 				<!-- Tab Navigation -->
 				<div class="mb-6">
-					<nav class="flex space-x-8">
+					<nav class="flex space-x-4 md:space-x-8 overflow-x-auto">
 						<button
 							v-for="tab in tabs"
 							:key="tab.id"
@@ -265,7 +326,7 @@
 									? 'border-blue-500 text-blue-600'
 									: 'border-transparent text-gray-500'
 							"
-							class="py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 hover:border-gray-300"
+							class="py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
 						>
 							{{ tab.label }}
 						</button>
@@ -273,9 +334,9 @@
 				</div>
 
 				<!-- Main Content Grid -->
-				<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
 					<!-- Health Summary -->
-					<div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+					<div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-4 md:p-6">
 						<h3 class="text-lg font-semibold text-gray-900 mb-2">Health Summary</h3>
 						<p class="text-sm text-gray-600 mb-6">
 							Your recent health metrics and goals
@@ -300,10 +361,10 @@
 									</div>
 								</div>
 								<div class="text-right">
-									<p class="text-xl font-bold text-gray-900">
+									<p class="text-lg md:text-xl font-bold text-gray-900">
 										{{ metric.value }}
 									</p>
-									<div class="w-48 bg-gray-200 rounded-full h-2 mt-2">
+									<div class="w-32 md:w-48 bg-gray-200 rounded-full h-2 mt-2">
 										<div
 											:class="metric.barColor"
 											class="h-2 rounded-full"
@@ -316,7 +377,7 @@
 					</div>
 
 					<!-- Upcoming Appointments -->
-					<div class="bg-white rounded-lg shadow-sm p-6">
+					<div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
 						<div class="flex items-center justify-between mb-4">
 							<h3 class="text-lg font-semibold text-gray-900">
 								Upcoming Appointments
@@ -333,7 +394,7 @@
 							>
 								<div
 									:class="appointment.avatarColor"
-									class="w-10 h-10 rounded-full flex items-center justify-center"
+									class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
 								>
 									<svg
 										class="w-5 h-5 text-white"
@@ -347,14 +408,14 @@
 										/>
 									</svg>
 								</div>
-								<div class="flex-1">
+								<div class="flex-1 min-w-0">
 									<div class="flex items-center justify-between">
-										<p class="font-medium text-gray-900">
+										<p class="font-medium text-gray-900 truncate">
 											{{ appointment.doctor }}
 										</p>
 										<span
 											:class="appointment.badgeColor"
-											class="text-xs px-2 py-1 rounded"
+											class="text-xs px-2 py-1 rounded flex-shrink-0 ml-2"
 											>{{ appointment.when }}</span
 										>
 									</div>
@@ -376,9 +437,9 @@
 				</div>
 
 				<!-- Bottom Grid -->
-				<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
 					<!-- Medication Reminders -->
-					<div class="bg-white rounded-lg shadow-sm p-6">
+					<div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
 						<h3 class="text-lg font-semibold text-gray-900 mb-4">
 							Medication Reminders
 						</h3>
@@ -386,20 +447,21 @@
 							<div
 								class="flex items-center justify-between p-3 bg-blue-50 rounded-lg"
 							>
-								<div class="flex items-center">
+								<div class="flex items-center min-w-0">
 									<svg
-										class="w-6 h-6 text-blue-600 mr-3"
+										class="w-6 h-6 text-blue-600 mr-3 flex-shrink-0"
 										fill="currentColor"
 										viewBox="0 0 20 20"
 									>
 										<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 									</svg>
-									<div>
+									<div class="min-w-0">
 										<p class="font-medium text-gray-900">Metformin</p>
 										<p class="text-sm text-gray-600">Take with breakfast</p>
 									</div>
 								</div>
-								<span class="text-xs bg-blue-600 text-white px-2 py-1 rounded"
+								<span
+									class="text-xs bg-blue-600 text-white px-2 py-1 rounded flex-shrink-0 ml-2"
 									>Due Soon</span
 								>
 							</div>
@@ -407,12 +469,12 @@
 					</div>
 
 					<!-- Recent Messages -->
-					<div class="bg-white rounded-lg shadow-sm p-6">
+					<div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
 						<h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Messages</h3>
 						<div class="space-y-3">
 							<div class="flex items-start space-x-3">
 								<div
-									class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"
+									class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0"
 								>
 									<svg
 										class="w-4 h-4 text-gray-600"
@@ -426,7 +488,7 @@
 										/>
 									</svg>
 								</div>
-								<div>
+								<div class="min-w-0">
 									<p class="text-sm font-medium text-gray-900">Dr. Johnson</p>
 									<p class="text-xs text-gray-600">
 										Your test results look good...
@@ -438,7 +500,7 @@
 					</div>
 
 					<!-- Health Tips -->
-					<div class="bg-white rounded-lg shadow-sm p-6">
+					<div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
 						<h3 class="text-lg font-semibold text-gray-900 mb-4">Health Tips</h3>
 						<div class="space-y-3">
 							<div class="p-3 bg-green-50 rounded-lg">
@@ -456,14 +518,42 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+// import { ref, inject } from 'vue'
+// import { Dropdown } from 'frappe-ui'
+// const session = inject('$session')
+
+import { ref, inject, onMounted, onUnmounted } from 'vue'
+import { Dropdown } from 'frappe-ui'
+const session = inject('$session')
 
 // Reactive state
+const sidebarCollapsed = ref(false)
 const expandedMenus = ref({
 	dashboard: true,
 })
 
 const activeTab = ref('overview')
+
+// Check if mobile on mount
+onMounted(() => {
+	const checkMobile = () => {
+		sidebarCollapsed.value = window.innerWidth < 768
+	}
+
+	checkMobile()
+	window.addEventListener('resize', checkMobile)
+
+	onUnmounted(() => {
+		window.removeEventListener('resize', checkMobile)
+	})
+})
+
+// Reactive state
+// const expandedMenus = ref({
+// 	dashboard: true,
+// })
+
+// const activeTab = ref('overview')
 
 // Menu items data
 const menuItems = ref([
@@ -556,7 +646,10 @@ const appointments = ref([
 const toggleMenu = (menu) => {
 	expandedMenus.value[menu] = !expandedMenus.value[menu]
 }
-
+// Add this method if it doesn't exist
+const toggleSidebar = () => {
+	sidebarCollapsed.value = !sidebarCollapsed.value
+}
 // SVG Icon Components
 const HeartIcon = {
 	template: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`,

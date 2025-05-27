@@ -3,21 +3,53 @@
 		<!-- Sidebar -->
 		<div
 			:class="[
-				sidebarExpanded ? 'w-64' : 'w-16',
+				sidebarExpanded ? 'w-64' : 'w-16 md:w-16 w-12', // Add w-5 for mobile (20px)
 				'transition-all duration-300 bg-white shadow-sm border-r border-gray-200 flex flex-col',
 			]"
 		>
 			<!-- Logo -->
 			<div class="p-4 border-b border-gray-200">
 				<div class="flex items-center">
-					<!-- <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+					<span
+						v-if="sidebarExpanded"
+						class="ml-3 text-lg font-semibold text-gray-900 cursor-pointer hover:text-blue-600 transition-colors"
+						@click="sidebarExpanded = !sidebarExpanded"
+					>
+						Suvaidyam
+					</span>
+					<!-- Add hamburger icon for collapsed state -->
+					<button
+						v-else
+						@click="sidebarExpanded = !sidebarExpanded"
+						class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-lg transition-colors"
+					>
+						<svg
+							class="w-5 h-5 text-gray-600"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"
+							></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<!-- Logo -->
+			<!-- <div class="p-4 border-b border-gray-200">
+				<div class="flex items-center">
+					<div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
 						<PlusIcon class="w-5 h-5 text-white" />
-					</div> -->
+					</div>
 					<span v-if="sidebarExpanded" class="ml-3 text-lg font-semibold text-gray-900"
 						>Suvaidyam</span
 					>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- Navigation -->
 			<div class="flex-1 overflow-y-auto py-4">
@@ -75,12 +107,25 @@
 								class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"
 							></div>
 						</div>
-						<div class="flex items-center space-x-2">
-							<div
-								class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center"
-							>
-								<span class="text-white text-sm font-medium">V</span>
-							</div>
+						<!-- Login Dropdown -->
+						<div class="" v-if="session.isLoggedIn">
+							<Dropdown
+								:options="[
+									{
+										label: 'Profile',
+										onClick: () => {},
+									},
+									{
+										label: 'Logout',
+										onClick: () => {
+											session.logout.submit()
+										},
+									},
+								]"
+								:button="{
+									label: session.user?.charAt(0).toUpperCase(),
+								}"
+							/>
 						</div>
 					</div>
 				</div>
@@ -325,7 +370,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+// import { ref } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
+import { Dropdown } from 'frappe-ui'
+const session = inject('$session')
+
+// Add this function in your script setup
+const handleResize = () => {
+	if (window.innerWidth < 768) {
+		// md breakpoint
+		sidebarExpanded.value = false
+	}
+}
+
+onMounted(() => {
+	handleResize()
+	window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('resize', handleResize)
+})
 import {
 	PlusIcon,
 	ChevronDownIcon,

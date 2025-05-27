@@ -112,7 +112,7 @@ const register = async () => {
 		console.log(data)
 
 		if (response.ok && data.message) {
-			toast.success('Registration successful! Please log in.', { autoClose: 5000 })
+			toast.success('Registration successful! Please log in.', { autoClose: 3000 })
 
 			firstName.value = ''
 			email.value = ''
@@ -124,10 +124,10 @@ const register = async () => {
 				router.push('/login')
 			}, 50000)
 		} else {
-			toast.error(`Error: ${data.error || 'Something went wrong'}`, { autoClose: 5000 })
+			toast.error(`Error: ${data.error || 'Something went wrong'}`, { autoClose: 3000 })
 		}
 	} catch (error) {
-		toast.error(`Error: ${error.message}`, { autoClose: 5000 })
+		toast.error(`Error: ${error.message}`, { autoClose: 3000 })
 	}
 }
 </script>
