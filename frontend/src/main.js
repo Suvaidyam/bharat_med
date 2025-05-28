@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
 import { session } from './Service/auth.js'
+import VOtpInput from "vue3-otp-input";
 
 
 import {
@@ -35,5 +36,6 @@ app.use(resourcesPlugin)
 app.component('Button', Button)
 app.component('Card', Card)
 app.component('Input', Input)
+app.component('v-otp-input', VOtpInput)
 
 app.mount('#app')

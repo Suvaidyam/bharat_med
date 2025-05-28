@@ -1,6 +1,6 @@
 <template>
 	<div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-		<div class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
+		<div class="max-w-md w-full bg-white p-8 rounded-sm shadow-lg">
 			<h2 class="text-2xl font-bold text-center text-gray-800 mb-6">User Registration</h2>
 			<form @submit.prevent="register">
 				<div class="mb-4">
@@ -9,7 +9,7 @@
 						type="text"
 						v-model="firstName"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					/>
 				</div>
 				<div class="mb-4">
@@ -18,7 +18,7 @@
 						type="email"
 						v-model="email"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					/>
 				</div>
 				<div class="mb-4">
@@ -27,7 +27,7 @@
 						type="tel"
 						v-model="mobile"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					/>
 				</div>
 				<div class="mb-4">
@@ -36,7 +36,7 @@
 						type="password"
 						v-model="password"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					/>
 				</div>
 				<div class="mb-4">
@@ -45,7 +45,7 @@
 						type="password"
 						v-model="confirmPassword"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					/>
 				</div>
 				<div class="mb-6">
@@ -53,7 +53,7 @@
 					<select
 						v-model="role"
 						required
-						class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+						class="w-full px-4 py-2 border rounded-sm focus:outline-none focus:ring focus:ring-blue-300"
 					>
 						<option value="">Select Role</option>
 						<option value="Doctor">Doctor</option>
@@ -62,7 +62,7 @@
 				</div>
 				<button
 					type="submit"
-					class="w-full bg-[#001f3f] text-white py-2 rounded-lg hover:bg-[#0f375f]"
+					class="w-full bg-[#001f3f] text-white py-2 rounded-sm hover:bg-[#0f375f]"
 				>
 					Register
 				</button>
