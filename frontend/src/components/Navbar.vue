@@ -83,20 +83,20 @@
 					}"
 				/>
 			</div>
-			<div class="" v-else>
+			<div class="rounded-sm" v-else>
 				<Dropdown
 					:options="[
 						{
 							label: 'Login Doctor',
 							onClick: () => {
 								console.log('Doctor Login')
-								router.push('/login')
+								router.push('/log')
 							},
 						},
 						{
 							label: 'Login Patient',
 							onClick: () => {
-								router.push('/login')
+								router.push('/log')
 							},
 						},
 					]"

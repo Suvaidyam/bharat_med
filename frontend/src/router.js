@@ -37,6 +37,16 @@ const routes = [
     name: 'Design',
     path: '/design',
     component: () => import('@/pages/Design.vue'),
+  },
+  {
+    name: 'Log',
+    path: '/log',
+    component: () => import('@/pages/Auth/Log.vue'),
+  },
+  {
+    name: 'Otp',
+    path: '/otp',
+    component: () => import('@/pages/Auth/Otp.vue'),
   }
   // {
   //   name: 'Test',
