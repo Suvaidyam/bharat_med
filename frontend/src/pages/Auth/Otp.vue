@@ -166,7 +166,7 @@ const verifyOTP = async () => {
 		)
 		if (response.status === 200) {
 			toast.success('OTP verified successfully')
-			router.push('/patient')
+			router.push('/dashboard')
 			window.location.reload()
 		} else {
 			toast.error(response.message)
@@ -197,7 +197,7 @@ const verifyOTP = async () => {
 					closeOnClick: true,
 					pauseOnHover: true,
 				})
-				router.push('/patient')
+				router.push('/dashboard')
 
 				setTimeout(() => {
 					window.location.reload()

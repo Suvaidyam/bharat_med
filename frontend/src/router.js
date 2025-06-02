@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { session } from './Service/auth.js'
 import { userResource } from '@/Service/user.js'
+import Dashboard from './pages/Dashboard.vue'
+import Admindash from './pages/Admindash.vue'
 
 
 const routes = [
@@ -24,20 +26,49 @@ const routes = [
     path: '/faqs',
     component: () => import('@/pages/FAQs.vue'),
   },
+  // {
+  //   name:'Dashboard',
+  //   path: '/dashboard',
+  //   component: () => import('@/pages/Dashboard.vue'),
+  // },
   {
-    name:'Dashboard',
     path: '/dashboard',
-    component: () => import('@/pages/Dashboard.vue'),
-  },{
-    name: 'Patient',
-    path: '/patient',
-    component: () => import('@/pages/Patient.vue'),
+    name: 'Dashboard',
+    component: Dashboard,
+    children: [{
+      path: 'admindash',
+      name: 'Admindash',
+      component: Admindash,
+    },
+    {
+      path: 'doctordash',
+      name: 'Doctordash',
+      component: () => import('@/pages/Doctordash.vue'),
+    },
+    {
+      path: 'patient',
+      name: 'Patient',
+      component: () => import('@/pages/Patient.vue'),
+    },
+    {
+      name: 'Addpatientviewlist',
+      path: '/addpatientviewlist',
+      component: () => import('@/pages/Addpatientviewlist.vue'),
+    },
+    {
+      name: 'Addpatient',
+      path: '/addpatient',
+      component: () => import('@/pages/Addpatient.vue'),
+    },
+
+  ]
   },
-  {
-    name: 'Design',
-    path: '/design',
-    component: () => import('@/pages/Design.vue'),
-  },
+  // {
+  //   name: 'Patient',
+  //   path: '/patient',
+  //   component: () => import('@/pages/Patient.vue'),
+  // },
+
   {
     name: 'Log',
     path: '/log',
@@ -47,12 +78,17 @@ const routes = [
     name: 'Otp',
     path: '/otp',
     component: () => import('@/pages/Auth/Otp.vue'),
-  }
+  },
   // {
-  //   name: 'Test',
-  //   path: '/test',
-  //   component: () => import('@/pages/Test.vue'),
+  //   name: 'Admindash',
+  //   path: '/admindash',
+  //   component: () => import('@/pages/Admindash.vue'),
   // }
+  ,
+ 
+ 
+
+
 ]
 
 let router = createRouter({

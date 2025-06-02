@@ -78,4 +78,39 @@ def register_user(first_name, email, mobile, password, confirm_password,role_pro
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "User Registration Failed")
         return {"error": str(e)}
+    
+    # Patient
+@frappe.whitelist(allow_guest=True)
+def register_patient(first_name, middle_name, last_name,date_of_birth, email,gender,marital_status,address,city,state,zip_code,phone_number,alternative_phone,contact_name,relationship,emergency_phone,emergency_email,profile_photo):
+    try:
+        patient = frappe.get_doc({
+            "doctype": "Patient",
+            "first_name": first_name,
+            "middle_name": middle_name,
+            "last_name": last_name,
+            "date_of_birth": date_of_birth,
+            "email": email,
+            "gender": gender,
+            "marital_status": marital_status,
+            "address": address,
+            "city": city,
+            "state": state,
+            "zip_code": zip_code,
+            "phone_number": phone_number,
+            "alternative_phone": alternative_phone,
+            "contact_name": contact_name,
+            "relationship": relationship,
+            "emergency_phone": emergency_phone,
+            "emergency_email": emergency_email,
+            "profile_photo": profile_photo
+        })
 
+        patient.insert(ignore_permissions=True, ignore_mandatory=True)
+        frappe.db.commit()
+
+        return {"message": "Patient registered successfully"}
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Patient Registration Failed")
+        return {"error": str(e)}
+    
