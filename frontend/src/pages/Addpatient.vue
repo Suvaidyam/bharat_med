@@ -1,11 +1,11 @@
 <template>
-	<div class="min-h-screen bg-gray-50 p-4">
+	<div class="min-h-screen p-4">
 		<!-- Header -->
 		<div class="mb-6">
 			<div class="flex items-center gap-4 mb-2">
 				<button
 					@click="goBack"
-					class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+					class="p-2 hover:bg-gray-100 rounded-sm transition-colors duration-200"
 				>
 					<svg
 						class="w-5 h-5 text-gray-600"
@@ -29,7 +29,7 @@
 		</div>
 
 		<!-- Form Container -->
-		<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+		<div class="bg-white rounded-sm shadow-sm border border-gray-200">
 			<!-- Tabs -->
 			<div class="border-b border-gray-200">
 				<nav class="flex space-x-8 px-6" aria-label="Tabs">
@@ -64,51 +64,51 @@
 							<!-- First Name -->
 							<div>
 								<label
-									for="firstName"
+									for="first_name"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									First Name
 								</label>
 								<input
-									id="firstName"
-									v-model="form.firstName"
+									id="first_name"
+									v-model="form.first_name"
 									type="text"
 									placeholder="Enter first name"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
 							<!-- Middle Name -->
 							<div>
 								<label
-									for="middleName"
+									for="middle_name"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Middle Name (Optional)
 								</label>
 								<input
-									id="middleName"
-									v-model="form.middleName"
+									id="middle_name"
+									v-model="form.middle_name"
 									type="text"
 									placeholder="Enter middle name"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
 							<!-- Last Name -->
 							<div>
 								<label
-									for="lastName"
+									for="last_name"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Last Name
 								</label>
 								<input
-									id="lastName"
-									v-model="form.lastName"
+									id="last_name"
+									v-model="form.last_name"
 									type="text"
 									placeholder="Enter last name"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 						</div>
@@ -117,16 +117,16 @@
 							<!-- Date of Birth -->
 							<div>
 								<label
-									for="dateOfBirth"
+									for="date_of_birth"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Date of Birth
 								</label>
 								<input
-									id="dateOfBirth"
-									v-model="form.dateOfBirth"
+									id="date_of_birth"
+									v-model="form.date_of_birth"
 									type="date"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
@@ -141,7 +141,7 @@
 								<select
 									id="gender"
 									v-model="form.gender"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								>
 									<option value="">Select gender</option>
 									<option value="Male">Male</option>
@@ -153,21 +153,22 @@
 							<!-- Marital Status -->
 							<div>
 								<label
-									for="maritalStatus"
+									for="marital_status"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Marital Status
 								</label>
 								<select
-									id="maritalStatus"
-									v-model="form.maritalStatus"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									id="marital_status"
+									v-model="form.marital_status"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								>
 									<option value="">Select status</option>
 									<option value="Single">Single</option>
 									<option value="Married">Married</option>
 									<option value="Divorced">Divorced</option>
 									<option value="Widowed">Widowed</option>
+									<option value="Separated">Separated</option>
 								</select>
 							</div>
 						</div>
@@ -185,7 +186,7 @@
 								v-model="form.address"
 								rows="3"
 								placeholder="Enter address"
-								class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 							></textarea>
 						</div>
 
@@ -203,7 +204,7 @@
 									v-model="form.city"
 									type="text"
 									placeholder="Enter city"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
@@ -220,24 +221,24 @@
 									v-model="form.state"
 									type="text"
 									placeholder="Enter state"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
 							<!-- Zip Code -->
 							<div>
 								<label
-									for="zipCode"
+									for="zip_code"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Zip Code
 								</label>
 								<input
-									id="zipCode"
-									v-model="form.zipCode"
+									id="zip_code"
+									v-model="form.zip_code"
 									type="text"
 									placeholder="Enter zip code"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 						</div>
@@ -263,62 +264,62 @@
 									v-model="form.email"
 									type="email"
 									placeholder="Enter email address"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
 							<!-- Phone Number -->
 							<div>
 								<label
-									for="phoneNumber"
+									for="phone_number"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Phone Number
 								</label>
 								<input
-									id="phoneNumber"
-									v-model="form.phoneNumber"
+									id="phone_number"
+									v-model="form.phone_number"
 									type="tel"
 									placeholder="Enter phone number"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
 							<!-- Alternative Phone -->
 							<div>
 								<label
-									for="alternativePhone"
+									for="alternative_phone"
 									class="block text-sm font-medium text-gray-700 mb-2"
 								>
 									Alternative Phone (Optional)
 								</label>
 								<input
-									id="alternativePhone"
-									v-model="form.alternativePhone"
+									id="alternative_phone"
+									v-model="form.alternative_phone"
 									type="tel"
 									placeholder="Enter alternative phone"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 						</div>
 					</div>
-					<div class="mb-6">
-						<label class="block font-semibold mb-2">Preferred Contact Method</label>
-						<div class="space-y-2">
-							<label class="flex items-center space-x-2">
-								<input type="radio" v-model="preferredContact" value="Phone" />
-								<span>Phone</span>
-							</label>
-							<label class="flex items-center space-x-2">
-								<input type="radio" v-model="preferredContact" value="Email" />
-								<span>Email</span>
-							</label>
-							<label class="flex items-center space-x-2">
-								<input type="radio" v-model="preferredContact" value="SMS" />
-								<span>SMS</span>
-							</label>
-						</div>
-					</div>
+					<!-- <div class="mb-6">
+						  <label class="block font-semibold mb-2">Preferred Contact Method</label>
+						  <div class="space-y-2">
+							  <label class="flex items-center space-x-2">
+								  <input type="radio" v-model="preferredContact" value="Phone" />
+								  <span>Phone</span>
+							  </label>
+							  <label class="flex items-center space-x-2">
+								  <input type="radio" v-model="preferredContact" value="Email" />
+								  <span>Email</span>
+							  </label>
+							  <label class="flex items-center space-x-2">
+								  <input type="radio" v-model="preferredContact" value="SMS" />
+								  <span>SMS</span>
+							  </label>
+						  </div>
+					  </div> -->
 
 					<hr class="my-6" />
 
@@ -327,34 +328,50 @@
 						<h2 class="text-lg font-semibold mb-4">Emergency Contact</h2>
 						<div class="grid md:grid-cols-2 gap-4">
 							<div>
-								<label class="block mb-1 font-medium">Contact Name</label>
+								<label class="block mb-1 font-medium" for="contact_name"
+									>Contact Name</label
+								>
 								<input
 									type="text"
-									class="w-full border rounded px-3 py-2"
+									id="contact_name"
+									v-model="form.contact_name"
+									class="w-full rounded-sm px-3 py-2 border border-gray-300"
 									placeholder="Enter emergency contact name"
 								/>
 							</div>
 							<div>
-								<label class="block mb-1 font-medium">Relationship</label>
+								<label class="block mb-1 font-medium" for="relationship"
+									>Relationship</label
+								>
 								<input
 									type="text"
-									class="w-full border rounded px-3 py-2"
+									id="relationship"
+									v-model="form.relationship"
+									class="w-full rounded-sm px-3 py-2 border border-gray-300"
 									placeholder="Enter relationship"
 								/>
 							</div>
 							<div>
-								<label class="block mb-1 font-medium">Phone Number</label>
+								<label class="block mb-1 font-medium" for="emergency_phone"
+									>Phone Number</label
+								>
 								<input
 									type="text"
-									class="w-full border rounded px-3 py-2"
+									id="emergency_phone"
+									v-model="form.emergency_phone"
+									class="w-full rounded-sm px-3 py-2 border border-gray-300"
 									placeholder="Enter emergency contact phone"
 								/>
 							</div>
 							<div>
-								<label class="block mb-1 font-medium">Email (Optional)</label>
+								<label class="block mb-1 font-medium" for="emergency_email"
+									>Email (Optional)</label
+								>
 								<input
 									type="email"
-									class="w-full border rounded px-3 py-2"
+									id="emergency_email"
+									v-model="form.emergency_email"
+									class="w-full rounded-sm px-3 py-2 border border-gray-300"
 									placeholder="Enter emergency contact email"
 								/>
 							</div>
@@ -367,32 +384,13 @@
 					<div>
 						<h2 class="text-lg font-semibold mb-4">Profile Photo</h2>
 						<div class="flex items-center space-x-4">
-							<div
-								class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-8 w-8 text-gray-400"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M3 16l4-4-4-4m0 0h13a4 4 0 014 4v1m-4-5l-4 4 4 4"
-									/>
-								</svg>
-							</div>
 							<div>
-								<label
-									for="upload"
-									class="inline-block bg-gray-200 px-4 py-2 rounded cursor-pointer hover:bg-gray-300"
-								>
-									Upload Photo
-								</label>
-								<input id="upload" type="file" class="hidden" />
+								<input
+									@change="handle_attachment($event)"
+									type="file"
+									name="fileToUpload"
+									id="fileToUpload"
+								/>
 								<p class="text-sm text-gray-500 mt-1">
 									Upload a profile photo. JPG, PNG or GIF. Max 2MB.
 								</p>
@@ -422,7 +420,7 @@
 								<select
 									id="bloodType"
 									v-model="form.bloodType"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								>
 									<option value="">Select blood type</option>
 									<option value="A+">A+</option>
@@ -448,7 +446,7 @@
 									v-model="form.emergencyContact"
 									type="text"
 									placeholder="Enter emergency contact"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 						</div>
@@ -465,7 +463,7 @@
 								v-model="form.allergies"
 								rows="3"
 								placeholder="Enter known allergies"
-								class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 							></textarea>
 						</div>
 
@@ -481,7 +479,7 @@
 								v-model="form.medicalHistory"
 								rows="4"
 								placeholder="Enter medical history"
-								class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+								class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 							></textarea>
 						</div>
 					</div>
@@ -508,7 +506,7 @@
 									v-model="form.insuranceProvider"
 									type="text"
 									placeholder="Enter insurance provider"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 
@@ -524,7 +522,7 @@
 									v-model="form.policyNumber"
 									type="text"
 									placeholder="Enter policy number"
-									class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+									class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 								/>
 							</div>
 						</div>
@@ -577,14 +575,14 @@
 				<button
 					@click="goBack"
 					type="button"
-					class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200 font-medium"
+					class="px-6 py-2 border border-gray-300 rounded-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 font-medium"
 				>
 					Cancel
 				</button>
 				<button
 					@click="savePatient"
 					type="button"
-					class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"
+					class="px-6 py-2 bg-black text-white rounded-sm hover:bg-gray-800 transition-colors duration-200 font-medium"
 				>
 					Save Patient
 				</button>
@@ -607,35 +605,26 @@ const tabs = [
 
 const form = reactive({
 	// Personal Information
-	firstName: '',
-	middleName: '',
-	lastName: '',
-	dateOfBirth: '',
+	first_name: '',
+	middle_name: '',
+	last_name: '',
+	date_of_birth: '',
 	gender: '',
-	maritalStatus: '',
+	marital_status: '',
 	address: '',
 	city: '',
 	state: '',
-	zipCode: '',
+	zip_code: '',
 
 	// Contact Information
 	email: '',
-	phoneNumber: '',
-	alternativePhone: '',
-
-	// Medical Information
-	bloodType: '',
-	emergencyContact: '',
-	allergies: '',
-	medicalHistory: '',
-
-	// Insurance & Billing
-	insuranceProvider: '',
-	policyNumber: '',
-
-	// Consent & Documents
-	treatmentConsent: false,
-	privacyConsent: false,
+	phone_number: '',
+	alternative_phone: '',
+	contact_name: '',
+	relationship: '',
+	emergency_phone: '',
+	emergency_email: '',
+	profile_photo: '',
 })
 
 const goBack = () => {
@@ -682,10 +671,22 @@ const savePatient = async () => {
 				router.push('/patients')
 			}, 2000)
 		} else {
-			toast.error(`Error: ${data.error || 'Registration failed'}`, { autoClose: 3000 })
+			toast.error(`Error: ${data.error || 'Registration failed'}`, {
+				autoClose: 3000,
+			})
 		}
 	} catch (error) {
 		toast.error(`Error: ${error.message}`, { autoClose: 3000 })
+	}
+}
+const handle_attachment = (event) => {
+	const file = event.target.files[0]
+	if (file) {
+		const reader = new FileReader()
+		reader.onload = (e) => {
+			form.profile_photo = e.target.result // base64 string
+		}
+		reader.readAsDataURL(file)
 	}
 }
 </script>
