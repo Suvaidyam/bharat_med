@@ -55,7 +55,7 @@
    "fieldname": "marital_status",
    "fieldtype": "Select",
    "label": "Marital Status",
-   "options": "Select status\nMarried\nDivorced\nWidowed\nSeparated"
+   "options": "Select status\nSingle\nMarried\nDivorced\nWidowed\nSeparated"
   },
   {
    "fieldname": "address",
@@ -84,12 +84,12 @@
   },
   {
    "fieldname": "phone_number",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "Phone Number"
   },
   {
    "fieldname": "alternative_phone",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "Alternative Phone"
   },
   {
@@ -104,7 +104,7 @@
   },
   {
    "fieldname": "emergency_phone",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "Emergency Phone"
   },
   {
@@ -121,7 +121,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-02 11:27:10.278395",
+ "modified": "2025-06-03 15:38:00.224167",
  "modified_by": "Administrator",
  "module": "Bharat Med",
  "name": "Patient",

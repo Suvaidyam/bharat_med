@@ -1,5 +1,5 @@
 <template>
-	<div class="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
+	<div class="min-h-screen p-4 sm:p-6 lg:p-8">
 		<!-- Header Section -->
 		<div class="mb-8">
 			<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -11,7 +11,7 @@
 				</div>
 				<router-link to="/addpatient" class="flex-shrink-0">
 					<button
-						class="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"
+						class="inline-flex items-center px-4 py-2 bg-black text-white rounded-sm hover:bg-gray-800 transition-colors duration-200 font-medium"
 					>
 						<svg
 							class="w-5 h-5 mr-2"
@@ -33,7 +33,7 @@
 		</div>
 
 		<!-- Patients List Section -->
-		<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+		<div class="bg-white rounded-sm shadow-sm border border-gray-200">
 			<div class="px-4 sm:px-6 py-4 border-b border-gray-200">
 				<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 					<div>
@@ -62,12 +62,12 @@
 								v-model="searchQuery"
 								type="text"
 								placeholder="Search patients..."
-								class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-64"
+								class="pl-10 pr-4 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full sm:w-64"
 							/>
 						</div>
 						<!-- Filters Button -->
 						<button
-							class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+							class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-sm hover:bg-gray-50 transition-colors duration-200"
 						>
 							<svg
 								class="w-4 h-4 mr-2"
@@ -86,7 +86,7 @@
 						</button>
 						<!-- Export Button -->
 						<button
-							class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+							class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-sm hover:bg-gray-50 transition-colors duration-200"
 						>
 							<svg
 								class="w-4 h-4 mr-2"
@@ -263,7 +263,7 @@
 			v-if="showAddPatientModal"
 			class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
 		>
-			<div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+			<div class="bg-white rounded-sm shadow-xl max-w-md w-full">
 				<div class="px-6 py-4 border-b border-gray-200">
 					<h3 class="text-lg font-semibold text-gray-900">Add New Patient</h3>
 				</div>
@@ -274,13 +274,13 @@
 					<div class="flex justify-end space-x-3">
 						<button
 							@click="showAddPatientModal = false"
-							class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+							class="px-4 py-2 border border-gray-300 rounded-sm hover:bg-gray-50 transition-colors duration-200"
 						>
 							Cancel
 						</button>
 						<button
 							@click="showAddPatientModal = false"
-							class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
+							class="px-4 py-2 bg-black text-white rounded-sm hover:bg-gray-800 transition-colors duration-200"
 						>
 							Add Patient
 						</button>
