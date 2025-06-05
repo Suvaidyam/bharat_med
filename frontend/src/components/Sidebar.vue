@@ -110,6 +110,232 @@ import {
 } from 'lucide-vue-next'
 
 // Router
+
+// Props
+
+// Emits
+
+// Data
+const sidebarItems = ref([
+	{
+		icon: BarChart3Icon,
+		label: 'Dashboard',
+		hasSubmenu: true,
+		active: false,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'Admin Dashboard', active: true, route: '/dashboard/admindash' },
+			{
+				label: 'Doctor Dashboard',
+				active: false,
+				route: '/dashboard/doctordash',
+			},
+			{
+				label: 'Patient Dashboard',
+				active: false,
+				route: '/dashboard/patient',
+			},
+		],
+	},
+	{
+		icon: UserCheckIcon,
+		label: 'Doctors',
+		hasSubmenu: true,
+		active: false,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'Doctors List', active: false, route: '/doctorlist' },
+			{ label: 'Add Doctor', active: false, route: '/adddoctor' },
+			{ label: 'Doctor Schedule', active: false, route: '/doctorschedule' },
+			{ label: 'Specializations', active: false, route: '/specializations' },
+		],
+	},
+	{ icon: UsersIcon, label: 'Patients', route: '/addpatientviewlist' },
+	{
+		icon: CalendarIcon,
+		label: 'Appointments',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'All Appointments', active: false, route: '/appointments/all' },
+			{
+				label: "Today's Appointments",
+				active: false,
+				route: '/appointments/today',
+			},
+			{
+				label: 'Schedule Appointment',
+				active: false,
+				route: '/appointments/schedule',
+			},
+		],
+	},
+	{
+		icon: PillIcon,
+		label: 'Prescriptions',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'All Prescriptions',
+				active: false,
+				route: '/prescriptions/all',
+			},
+			{
+				label: 'Create Prescription',
+				active: false,
+				route: '/prescriptions/create',
+			},
+		],
+	},
+	{
+		icon: ActivityIcon,
+		label: 'Ambulance',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'Available Ambulances',
+				active: false,
+				route: '/ambulance/available',
+			},
+			{ label: 'Book Ambulance', active: false, route: '/ambulance/book' },
+		],
+	},
+	{
+		icon: PillIcon,
+		label: 'Pharmacy',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'Medicine Inventory',
+				active: false,
+				route: '/pharmacy/inventory',
+			},
+			{ label: 'Orders', active: false, route: '/pharmacy/orders' },
+		],
+	},
+	{
+		icon: BuildingIcon,
+		label: 'Blood Bank',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'Blood Inventory',
+				active: false,
+				route: '/blood-bank/inventory',
+			},
+			{ label: 'Donors', active: false, route: '/blood-bank/donors' },
+		],
+	},
+	{
+		icon: ClipboardListIcon,
+		label: 'Billing',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'All Bills', active: false, route: '/billing/all' },
+			{ label: 'Generate Bill', active: false, route: '/billing/generate' },
+		],
+	},
+	{
+		icon: BuildingIcon,
+		label: 'Departments',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'All Departments', active: false, route: '/departments/all' },
+			{ label: 'Add Department', active: false, route: '/departments/add' },
+		],
+	},
+	{
+		icon: FolderIcon,
+		label: 'Inventory',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'Medical Equipment',
+				active: false,
+				route: '/inventory/equipment',
+			},
+			{ label: 'Supplies', active: false, route: '/inventory/supplies' },
+		],
+	},
+	{
+		icon: UsersIcon,
+		label: 'Staff',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'All Staff', active: false, route: '/staff/all' },
+			{ label: 'Add Staff', active: false, route: '/staff/add' },
+		],
+	},
+	{
+		icon: FileTextIcon,
+		label: 'Records',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'Patient Records', active: false, route: '/records/patients' },
+			{ label: 'Medical History', active: false, route: '/records/history' },
+		],
+	},
+	{
+		icon: CalendarIcon,
+		label: 'Room Allotment',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'Available Rooms', active: false, route: '/rooms/available' },
+			{ label: 'Room Bookings', active: false, route: '/rooms/bookings' },
+		],
+	},
+	{
+		icon: StarIcon,
+		label: 'Reviews',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'Patient Reviews', active: false, route: '/reviews/patients' },
+			{ label: 'Doctor Reviews', active: false, route: '/reviews/doctors' },
+		],
+	},
+	{ icon: FileTextIcon, label: 'Feedback', route: '/feedback' },
+	{
+		icon: BarChart3Icon,
+		label: 'Reports',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{
+				label: 'Financial Reports',
+				active: false,
+				route: '/reports/financial',
+			},
+			{ label: 'Patient Reports', active: false, route: '/reports/patients' },
+		],
+	},
+	{
+		icon: SettingsIcon,
+		label: 'Settings',
+		hasSubmenu: true,
+		route: '/dashboard',
+		submenu: [
+			{ label: 'General Settings', active: false, route: '/settings/general' },
+			{ label: 'User Management', active: false, route: '/settings/users' },
+		],
+	},
+])
+
+// Methods
+
+// ... icon imports remain unchanged ...
+
+// Router
 const router = useRouter()
 const route = useRoute()
 
@@ -124,189 +350,15 @@ const props = defineProps({
 // Emits
 const emit = defineEmits(['toggle-sidebar', 'navigate'])
 
-// Data
-const sidebarItems = ref([
-	{
-		icon: BarChart3Icon,
-		label: 'Dashboard',
-		hasSubmenu: true,
-		active: true,
-		route: '/dashboard',
-		submenu: [
-			{ label: 'Admin Dashboard', active: true, route: '/dashboard/admindash' },
-			{ label: 'Doctor Dashboard', active: false, route: '/dashboard/doctordash' },
-			{ label: 'Patient Dashboard', active: false, route: '/dashboard/patient' },
-		],
-	},
-	{
-		icon: UserCheckIcon,
-		label: 'Doctors',
-		hasSubmenu: true,
-		route: '/doctors',
-		submenu: [
-			{ label: 'All Doctors', active: false, route: '/doctors/all' },
-			{ label: 'Add Doctor', active: false, route: '/doctors/add' },
-			{ label: 'Doctor Schedule', active: false, route: '/doctors/schedule' },
-		],
-	},
-	{ icon: UsersIcon, label: 'Patients', route: '/addpatientviewlist' },
-	{
-		icon: CalendarIcon,
-		label: 'Appointments',
-		hasSubmenu: true,
-		route: '/appointments',
-		submenu: [
-			{ label: 'All Appointments', active: false, route: '/appointments/all' },
-			{ label: "Today's Appointments", active: false, route: '/appointments/today' },
-			{ label: 'Schedule Appointment', active: false, route: '/appointments/schedule' },
-		],
-	},
-	{
-		icon: PillIcon,
-		label: 'Prescriptions',
-		hasSubmenu: true,
-		route: '/prescriptions',
-		submenu: [
-			{ label: 'All Prescriptions', active: false, route: '/prescriptions/all' },
-			{ label: 'Create Prescription', active: false, route: '/prescriptions/create' },
-		],
-	},
-	{
-		icon: ActivityIcon,
-		label: 'Ambulance',
-		hasSubmenu: true,
-		route: '/ambulance',
-		submenu: [
-			{ label: 'Available Ambulances', active: false, route: '/ambulance/available' },
-			{ label: 'Book Ambulance', active: false, route: '/ambulance/book' },
-		],
-	},
-	{
-		icon: PillIcon,
-		label: 'Pharmacy',
-		hasSubmenu: true,
-		route: '/pharmacy',
-		submenu: [
-			{ label: 'Medicine Inventory', active: false, route: '/pharmacy/inventory' },
-			{ label: 'Orders', active: false, route: '/pharmacy/orders' },
-		],
-	},
-	{
-		icon: BuildingIcon,
-		label: 'Blood Bank',
-		hasSubmenu: true,
-		route: '/blood-bank',
-		submenu: [
-			{ label: 'Blood Inventory', active: false, route: '/blood-bank/inventory' },
-			{ label: 'Donors', active: false, route: '/blood-bank/donors' },
-		],
-	},
-	{
-		icon: ClipboardListIcon,
-		label: 'Billing',
-		hasSubmenu: true,
-		route: '/billing',
-		submenu: [
-			{ label: 'All Bills', active: false, route: '/billing/all' },
-			{ label: 'Generate Bill', active: false, route: '/billing/generate' },
-		],
-	},
-	{
-		icon: BuildingIcon,
-		label: 'Departments',
-		hasSubmenu: true,
-		route: '/departments',
-		submenu: [
-			{ label: 'All Departments', active: false, route: '/departments/all' },
-			{ label: 'Add Department', active: false, route: '/departments/add' },
-		],
-	},
-	{
-		icon: FolderIcon,
-		label: 'Inventory',
-		hasSubmenu: true,
-		route: '/inventory',
-		submenu: [
-			{ label: 'Medical Equipment', active: false, route: '/inventory/equipment' },
-			{ label: 'Supplies', active: false, route: '/inventory/supplies' },
-		],
-	},
-	{
-		icon: UsersIcon,
-		label: 'Staff',
-		hasSubmenu: true,
-		route: '/staff',
-		submenu: [
-			{ label: 'All Staff', active: false, route: '/staff/all' },
-			{ label: 'Add Staff', active: false, route: '/staff/add' },
-		],
-	},
-	{
-		icon: FileTextIcon,
-		label: 'Records',
-		hasSubmenu: true,
-		route: '/records',
-		submenu: [
-			{ label: 'Patient Records', active: false, route: '/records/patients' },
-			{ label: 'Medical History', active: false, route: '/records/history' },
-		],
-	},
-	{
-		icon: CalendarIcon,
-		label: 'Room Allotment',
-		hasSubmenu: true,
-		route: '/room-allotment',
-		submenu: [
-			{ label: 'Available Rooms', active: false, route: '/rooms/available' },
-			{ label: 'Room Bookings', active: false, route: '/rooms/bookings' },
-		],
-	},
-	{
-		icon: StarIcon,
-		label: 'Reviews',
-		hasSubmenu: true,
-		route: '/reviews',
-		submenu: [
-			{ label: 'Patient Reviews', active: false, route: '/reviews/patients' },
-			{ label: 'Doctor Reviews', active: false, route: '/reviews/doctors' },
-		],
-	},
-	{ icon: FileTextIcon, label: 'Feedback', route: '/feedback' },
-	{
-		icon: BarChart3Icon,
-		label: 'Reports',
-		hasSubmenu: true,
-		route: '/reports',
-		submenu: [
-			{ label: 'Financial Reports', active: false, route: '/reports/financial' },
-			{ label: 'Patient Reports', active: false, route: '/reports/patients' },
-		],
-	},
-	{
-		icon: SettingsIcon,
-		label: 'Settings',
-		hasSubmenu: true,
-		route: '/settings',
-		submenu: [
-			{ label: 'General Settings', active: false, route: '/settings/general' },
-			{ label: 'User Management', active: false, route: '/settings/users' },
-		],
-	},
-])
-
 // Methods
 const toggleSidebar = () => {
 	emit('toggle-sidebar')
 }
 
 const handleItemClick = async (item) => {
-	// If item doesn't have submenu, navigate directly
 	if (!item.hasSubmenu) {
-		// Reset all active states
 		resetAllActiveStates()
 		item.active = true
-
-		// Navigate to the route
 		try {
 			await router.push(item.route)
 			emit('navigate', { type: 'main', route: item.route, item })
@@ -316,16 +368,10 @@ const handleItemClick = async (item) => {
 		return
 	}
 
-	// For items with submenu, toggle the active state
 	const wasActive = item.active
-
-	// Reset all active states
 	resetAllActiveStates()
-
-	// Toggle current item
 	item.active = !wasActive
 
-	// If expanding and has a default route, navigate to it
 	if (item.active && item.route) {
 		try {
 			await router.push(item.route)
@@ -337,20 +383,20 @@ const handleItemClick = async (item) => {
 }
 
 const handleSubmenuClick = async (parentItem, submenu) => {
-	// Reset all submenu active states for this parent
 	if (parentItem.submenu) {
 		parentItem.submenu.forEach((sub) => {
 			sub.active = false
 		})
 	}
-
-	// Set selected submenu as active
 	submenu.active = true
-
-	// Navigate to the submenu route
 	try {
 		await router.push(submenu.route)
-		emit('navigate', { type: 'submenu', route: submenu.route, submenu, parentItem })
+		emit('navigate', {
+			type: 'submenu',
+			route: submenu.route,
+			submenu,
+			parentItem,
+		})
 	} catch (error) {
 		console.error('Navigation error:', error)
 	}
@@ -367,19 +413,14 @@ const resetAllActiveStates = () => {
 	})
 }
 
-// Set active state based on current route
 const setActiveBasedOnRoute = () => {
 	const currentPath = route.path
-
 	sidebarItems.value.forEach((item) => {
-		// Check if current path matches main item route
 		if (currentPath === item.route) {
 			resetAllActiveStates()
 			item.active = true
 			return
 		}
-
-		// Check submenu items
 		if (item.submenu) {
 			const activeSubmenu = item.submenu.find((sub) => currentPath === sub.route)
 			if (activeSubmenu) {
@@ -392,7 +433,6 @@ const setActiveBasedOnRoute = () => {
 	})
 }
 
-// Handle responsive behavior
 const handleResize = () => {
 	if (window.innerWidth < 768) {
 		emit('toggle-sidebar', false)
@@ -402,7 +442,7 @@ const handleResize = () => {
 // Watch for route changes
 onMounted(() => {
 	handleResize()
-	setActiveBasedOnRoute()
+	setActiveBasedOnRoute() // Only activates current route item
 	window.addEventListener('resize', handleResize)
 })
 
@@ -410,7 +450,6 @@ onUnmounted(() => {
 	window.removeEventListener('resize', handleResize)
 })
 
-// Watch for route changes to update active states
 import { watch } from 'vue'
 watch(
 	() => route.path,

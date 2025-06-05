@@ -60,6 +60,26 @@ const routes = [
       path: '/addpatient',
       component: () => import('@/pages/Addpatient.vue'),
     },
+    {
+      name: 'Doctorlist',
+      path: '/doctorlist',
+      component: () => import('@/pages/Doctors/Doctorlist.vue'),
+    },
+    {
+      name: 'Adddoctor',
+      path: '/adddoctor',
+      component: () => import('@/pages/Doctors/Adddoctor.vue'),
+    },
+    {
+      name: 'Doctorschedule',
+      path: '/doctorschedule',
+      component: () => import('@/pages/Doctors/Doctorschedule.vue'),
+    },
+    {
+      name: 'Specializations',
+      path: '/specializations',
+      component: () => import('@/pages/Doctors/Specializations.vue'),
+    }
 
   ]
   },

@@ -108,3 +108,51 @@ def register_patient(first_name, middle_name, last_name, date_of_birth, email, g
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "Patient Registration Failed")
         return {"error": str(e)}
+
+
+
+
+# Doctor Registration api
+@frappe.whitelist(allow_guest=True)
+def register_doctor(first_name,  last_name, email, date_of_birth, gender, phone_number,emergency_contact_name,emergency_contact_phone,address, city, state, zip_code, profile_photo=None):
+
+    try:
+        # Step 1: Create doctor without photo
+        doctor = frappe.get_doc({
+            "doctype": "Doctors",
+            "first_name": first_name,
+            "last_name": last_name,
+            "date_of_birth": date_of_birth,
+            "gender": gender,
+            "address": address,
+            "phone_number": phone_number,
+            "emergency_contact_name": emergency_contact_name,
+            "emergency_contact_phone": emergency_contact_phone,
+            "email": email,
+            "city": city,
+            "state": state,
+            "zip_code": zip_code
+        })
+        doctor.insert(ignore_permissions=True)
+        
+        # Step 2: Save image after insert
+        if profile_photo and ',' in profile_photo:
+            base64_data = profile_photo.split(',')[1]
+            file_content = base64.b64decode(base64_data)
+            saved_file = save_file(
+                fname=f"{first_name}_{last_name}_profile.png",
+                content=file_content,
+                dt="Doctors",
+                dn=doctor.name,
+                decode=False
+            )
+            # Attach the image URL
+            doctor.profile_photo = saved_file.file_url
+            doctor.save(ignore_permissions=True)
+
+        frappe.db.commit()
+        return {"message": "Doctor registered successfully", "doctor": doctor.name}
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Doctor Registration Failed")
+        return {"error": str(e)}
