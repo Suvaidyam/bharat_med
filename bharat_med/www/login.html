@@ -1,0 +1,532 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    .mgrant-container {
+        display: flex;
+        justify-content: space-between;
+        height: 100vh;
+        width: 100%;
+        max-width: 1920px;
+    }
+
+
+    .left {
+        background: url('https://res.cloudinary.com/dusyfh7fo/image/upload/v1749189939/IMG_20250515_131344_etwh7j_xyohe1.jpg') no-repeat center center;
+        background-size: cover;
+        /* background-position: 0% 15%; */
+        background-repeat: no-repeat;
+        /* position: relative; */
+        min-width: 70%;
+        flex: 0 0 70%;
+    }
+    .right {
+            width: 30%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-height: 100vh;
+        }
+
+    /* .overlay {
+        height: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+    } */
+
+    .mgrant-logo-heading {
+        width: 187px;
+        height: 66px;
+        margin-bottom: 3rem;
+    }
+
+    .mgrant-page-card-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tagline {
+        font-size: 20px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.15%;
+        color: #FFFFFF;
+    }
+
+    .mgrant-auth {
+        width: 100%;
+        z-index: 10;
+    }
+
+    .mgrant-login-box,
+    .mgrant-forgot-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem 3rem;
+        background-color: #fff;
+        overflow-y: auto;
+    }
+
+    .mgrant-h2 {
+        font-size: 20px;
+        text-align: center;
+        font-weight: 500;
+        color: #0E1116;
+        font-family: "Inter", sans-serif;
+    }
+
+    .mgrant-login-box-p {
+        margin-bottom: 0.5rem;
+        font-size: 14px;
+        font-weight: 400;
+        color: #0E1116;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.25%;
+    }
+
+    .mgrant-login-box .mgrant-page-card-body {
+        display: flex;
+        flex-direction: column;
+        padding-top: 12px;
+        justify-content: center;
+    }
+
+    .mgrant-page-card-body,
+    .mgrant-forgot-box,
+    .mgrant-login-box ::-webkit-input-placeholder {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.25%;
+        color: #6E7073;
+    }
+
+    .mgrant-login-box input,
+    .mgrant-forgot-box input {
+        padding: 0px 26px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        width: 100%;
+        height: 31px;
+    }
+
+    .forgot {
+        text-align: center;
+        margin: 12px 0px 0px 0px;
+    }
+
+    .forgot a {
+        color: #E55219;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.25%;
+    }
+
+    .forgot a:hover {
+        color: #E55219;
+    }
+
+    .login-btn {
+        width: 100%;
+        height: 31px;
+        background-color: #001f3f;
+        border: none;
+        border-radius: 4px;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 1.25%;
+        line-height: 110.000%;
+    }
+
+    .or {
+        text-align: center;
+        margin: 12px 0px 16px 0px;
+        font-size: 12px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0%;
+        line-height: 100%;
+        color: #525252;
+    }
+
+    .social-login {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .social-btn:hover {
+        text-decoration: none;
+        color: #A01236;
+        border-color: #A01236;
+    }
+
+    .social-btn {
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+        gap: 10px;
+        padding: 0px 8px;
+        width: 100%;
+        height: 31px;
+        border: 1px solid #D9D9D9;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 400;
+        color: #111111;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0%;
+        cursor: pointer;
+    }
+
+    .powered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.4%;
+        line-height: 110.000%;
+        color: #808080;
+    }
+
+    .mgrant-password {
+        position: relative;
+        width: 100%;
+        margin-top: 12px;
+        color: #9FA0A2;
+    }
+
+    .mgrant-password input {
+        width: 100%;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .mgrant-password-icon .mgrant-email-icon {
+        position: absolute;
+        left: 10px;
+        top: 9px;
+    }
+
+    .mgrant-email-icon {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    .mgrant-password-icon {
+        position: absolute;
+        left: 10px;
+        top: 7px;
+    }
+
+    .mgrant-email {
+        position: relative;
+        width: 100%;
+    }
+
+    @media (max-width: 1200px) {
+        .mgrant-auth {
+            right: -28%;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .left {
+            display: none;
+        }
+
+        .right {
+            width: 100%;
+        }
+
+        .mgrant-auth {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .mgrant-container {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            padding: 1rem;
+        }
+
+        .logo {
+            width: 180px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .mgrant-login-box {
+            padding: 1.5rem;
+        }
+
+        /*.left{
+	height: 60vh;
+   } */
+
+        .mgrant-auth {
+            width: 100%;
+        }
+
+        .logo {
+            width: 110px;
+            height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .mgrant-h2 {
+            font-size: 20px;
+        }
+
+        .mgrant-login-box-p {
+            font-size: 13px;
+            margin-bottom: 0rem;
+        }
+
+        input {
+            padding: 0.6rem;
+        }
+
+        .btn-login,
+        .signup-btn {
+            padding: 0.6rem;
+        }
+    }
+
+    @media (max-height: 700px) and (max-width: 768px) {
+        .mgrant-login-box {
+            padding: 1.25rem;
+        }
+    }
+</style>
+{% extends "templates/web.html" %}
+{% block navbar %}{% endblock %}
+
+{% macro email_login_body() -%}
+{% if not disable_user_pass_login or (ldap_settings and ldap_settings.enabled) %}
+<div class="mgrant-page-card-body">
+    <div class="mgrant-email">
+        <svg class="mgrant-email-icon" width="13" height="11" viewBox="0 0 13 11" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.8578 1.39264C12.8578 0.684964 12.2788 0.105957 11.5711 0.105957H1.27765C0.569974 0.105957 -0.0090332 0.684964 -0.0090332 1.39264V9.11273C-0.0090332 9.8204 0.569974 10.3994 1.27765 10.3994H11.5711C12.2788 10.3994 12.8578 9.8204 12.8578 9.11273V1.39264ZM11.5711 1.39264L6.42438 4.60934L1.27765 1.39264H11.5711ZM11.5711 9.11273H1.27765V2.67932L6.42438 5.89602L11.5711 2.67932V9.11273Z"
+                fill="#9FA0A2" />
+        </svg>
+        <input type="text" id="login_email"
+            placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('Email ID') }}{% endif %}"
+            required autofocus autocomplete="username">
+    </div>
+    <div class="mgrant-password">
+        <svg class="mgrant-password-icon" width="11" height="15" viewBox="0 0 11 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M5.42438 10.8784C5.08313 10.8784 4.75585 10.7429 4.51455 10.5016C4.27325 10.2603 4.13769 9.93298 4.13769 9.59173C4.13769 8.87762 4.71027 8.30505 5.42438 8.30505C5.76562 8.30505 6.0929 8.44061 6.3342 8.68191C6.5755 8.92321 6.71106 9.25048 6.71106 9.59173C6.71106 9.93298 6.5755 10.2603 6.3342 10.5016C6.0929 10.7429 5.76562 10.8784 5.42438 10.8784ZM9.28442 12.8084V6.37503H1.56433V12.8084H9.28442ZM9.28442 5.08835C9.62567 5.08835 9.95294 5.22391 10.1942 5.46521C10.4355 5.70651 10.5711 6.03378 10.5711 6.37503V12.8084C10.5711 13.1497 10.4355 13.477 10.1942 13.7183C9.95294 13.9596 9.62567 14.0951 9.28442 14.0951H1.56433C1.22308 14.0951 0.895809 13.9596 0.654509 13.7183C0.41321 13.477 0.277649 13.1497 0.277649 12.8084V6.37503C0.277649 5.66092 0.850222 5.08835 1.56433 5.08835H2.20767V3.80167C2.20767 2.94854 2.54657 2.13036 3.14982 1.52711C3.75307 0.923863 4.57125 0.584961 5.42438 0.584961C5.8468 0.584961 6.26509 0.668163 6.65535 0.829818C7.04562 0.991472 7.40023 1.22841 7.69893 1.52711C7.99763 1.82581 8.23457 2.18042 8.39622 2.57069C8.55788 2.96095 8.64108 3.37924 8.64108 3.80167V5.08835H9.28442ZM5.42438 1.87164C4.9125 1.87164 4.42159 2.07498 4.05964 2.43693C3.69769 2.79888 3.49435 3.28979 3.49435 3.80167V5.08835H7.3544V3.80167C7.3544 3.28979 7.15106 2.79888 6.78911 2.43693C6.42716 2.07498 5.93625 1.87164 5.42438 1.87164Z"
+                fill="#9FA0A2" />
+        </svg>
+        <input type="password" id="login_password" style="padding-right: 45px;" placeholder="Password"
+            autocomplete="current-password" required>
+        <span toggle="#login_password" class="toggle-password text-muted">{{ _('Show') }}</span>
+    </div>
+</div>
+{% endif %}
+<div class="" style="margin-top: 12px;">
+    {% if not disable_user_pass_login %}
+    <button class="login-btn custom-btn-primary" type="submit">
+        {{ _("Login") }}</button>
+    {% endif %}
+    {% if ldap_settings and ldap_settings.enabled %}
+    <button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login">
+        {{ _("Login with LDAP") }}</button>
+    {% endif %}
+    {% if not disable_user_pass_login %}
+    <p class="forgot">
+        <a href="#forgot">{{ _("Forgot Password?") }}</a>
+    </p>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro logo_section(title=null) %}
+<!-- <div class="mgrant-page-card-head">
+    <img src="/assets/mgrant/images/mGrant/mgrant_logo_red.png" alt="mGrant Logo" class="mgrant-logo-heading">
+    {% if title %}
+    <div class="mgrant-h2">{{_(title)}}</div>
+    {% else %}
+    <div class="mgrant-h2">{{ _('Login to {0}').format(app_name or _("Frappe")) }}</div>
+    {% endif %}
+</div> -->
+{% endmacro %}
+
+{% block page_content %}
+<!-- {{ for_test }} -->
+<div>
+    <noscript>
+        <div class="text-center my-5">
+            <h4>{{ _("Javascript is disabled on your browser") }}</h4>
+            <p class="text-muted">
+                {{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the
+                instructions in the following link: {0}").format("<a
+                    href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
+        </div>
+    </noscript>
+    <div class="mgrant-container login-container">
+        <div class="left">
+            
+        </div>
+        <div class="right" style="width: 100%; background-color: white;">
+            <div class="mgrant-auth">
+                <div class="mgrant-login-box">
+                    {{ logo_section("Login to your account") }}
+                    <div class="mgrant-login-content mgrant-page-card">
+                        <form class="form-signin form-login" role="form">
+                            {%- if social_login or login_with_email_link -%}
+                            <div class="mgrant-page-card-body">
+                                <form class="form-signin form-login" role="form">
+                                    {{ email_login_body() }}
+                                </form>
+                                {% if not disable_user_pass_login or (ldap_settings and ldap_settings.enabled) %}
+                                <div style="display: flex; justify-content: center;gap:3px;">
+                                    <hr style="width: 100%;">
+                                    <p class="or">OR</p>
+                                    <hr style="width: 100%;">
+                                </div>
+                                {% endif %}
+                                {% if login_with_email_link %}
+                                <form class="form-signin form-login-with-email-link hide" role="form">
+                                    <div class="mgrant-email" style="margin: 7px 0px 12px 0px;">
+                                        <svg class="mgrant-email-icon" width="13" height="11" viewBox="0 0 13 11"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12.8578 1.39264C12.8578 0.684964 12.2788 0.105957 11.5711 0.105957H1.27765C0.569974 0.105957 -0.0090332 0.684964 -0.0090332 1.39264V9.11273C-0.0090332 9.8204 0.569974 10.3994 1.27765 10.3994H11.5711C12.2788 10.3994 12.8578 9.8204 12.8578 9.11273V1.39264ZM11.5711 1.39264L6.42438 4.60934L1.27765 1.39264H11.5711ZM11.5711 9.11273H1.27765V2.67932L6.42438 5.89602L11.5711 2.67932V9.11273Z"
+                                                fill="#9FA0A2" />
+                                        </svg>
+                                        <input type="email" id="login_with_email_link_email" style="width: 100%;"
+                                            placeholder="{{ _('Email Address') }}" required autofocus
+                                            autocomplete="username">
+                                    </div>
+                                    <div class="mgrant-page-card-actions">
+                                        <button class="login-btn custom-btn-primary btn-login-with-email-link"
+                                            type="submit">{{
+                                            _("Send login link") }}</button>
+                                    </div>
+                                </form>
+                                {% if social_login %}
+                                <div style="display: flex; justify-content: center;gap:3px;margin-top: 10px;">
+                                    <hr style="width: 100%;">
+                                    <p class="or">OR</p>
+                                    <hr style="width: 100%;">
+                                </div>
+                                {% endif %}
+                                {% endif %}
+                                <div class="social-login">
+                                    {% for provider in provider_logins %}
+                                    <a href="{{ provider.auth_url }}" class="social-btn">
+                                        {% if provider.icon %}
+                                        {{ provider.icon }}
+                                        {% endif %}
+                                        <p style="text-align: center; width: 100%;line-height: 31px;">{{ _("Login with
+                                            {0}").format(provider.provider_name) }}</p>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                                {% if login_with_email_link %}
+                                <!-- <div class="social-login login-with-email-link social-login-buttons" style="margin-top: 8px;line-height: 31px;">
+									<a href="#login-with-email-link" class="social-btn btn-login-with-email-link">
+										<img src="/assets/mgrant/images/mGrant/email.svg" alt="Google">
+										<p style="text-align: center; width: 100%;line-height: 31px;">{{_("Login with Email Link")}}</p></a>
+										
+								</div> -->
+                                {% endif %}
+                            </div>
+                            {% else %}
+                            {{ email_login_body() }}
+                            {%- endif -%}
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="mgrant-container for-login-with-email-link" style="display: none;">
+        <div class="left">
+       
+        </div>
+        <div class="right" style="width: 100%; background-color: white;">
+            <div class="mgrant-auth">
+                <div class='mgrant-forgot-box'>
+                    {{ logo_section(_('Login with Email Link')) }}
+                    <form class="form-signin form-login-with-email-link hide" role="form">
+                        <div class="mgrant-email" style="margin: 20px 0px 12px 0px;">
+                            <svg class="mgrant-email-icon" width="13" height="11" viewBox="0 0 13 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.8578 1.39264C12.8578 0.684964 12.2788 0.105957 11.5711 0.105957H1.27765C0.569974 0.105957 -0.0090332 0.684964 -0.0090332 1.39264V9.11273C-0.0090332 9.8204 0.569974 10.3994 1.27765 10.3994H11.5711C12.2788 10.3994 12.8578 9.8204 12.8578 9.11273V1.39264ZM11.5711 1.39264L6.42438 4.60934L1.27765 1.39264H11.5711ZM11.5711 9.11273H1.27765V2.67932L6.42438 5.89602L11.5711 2.67932V9.11273Z"
+                                    fill="#9FA0A2" />
+                            </svg>
+                            <input type="email" id="login_with_email_link_email" style="width: 100%;"
+                                placeholder="{{ _('Email Address') }}" required autofocus autocomplete="username">
+                        </div>
+                        <div class="mgrant-page-card-actions">
+                            <button class="login-btn custom-btn-primary btn-login-with-email-link" type="submit">{{
+                                _("Send login link") }}</button>
+                            <p class="forgot" style="text-align: center;margin-bottom: 0;">
+                                <a href="#login">{{ _("Back to Login") }}</a>
+                            </p>
+                        </div>
+                    </form>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block script %}
+    <script>{% include "templates/login/login.js" %}</script>
+    {% endblock %}
