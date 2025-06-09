@@ -157,16 +157,21 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'All Appointments', active: false, route: '/appointments/all' },
+			{ label: 'All Appointments', active: false, route: '/allappointments' },
 			{
-				label: "Today's Appointments",
+				label: 'Add Appointments',
 				active: false,
-				route: '/appointments/today',
+				route: '/addappointments',
 			},
 			{
-				label: 'Schedule Appointment',
+				label: 'Callendar View',
 				active: false,
-				route: '/appointments/schedule',
+				route: '/callendar',
+			},
+			{
+				label: 'Appointment Requests',
+				active: false,
+				route: '/appointmentrequests',
 			},
 		],
 	},

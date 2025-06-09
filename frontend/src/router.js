@@ -79,6 +79,26 @@ const routes = [
       name: 'Specializations',
       path: '/specializations',
       component: () => import('@/pages/Doctors/Specializations.vue'),
+    },
+    {
+      name: 'Allappointments',
+      path: '/allappointments',
+      component: () => import('@/pages/Appointment/Allappointments.vue'),
+    },
+    {
+      name: 'Addappointment',
+      path: '/addappointments',
+      component: () => import('@/pages/Appointment/Addappointment.vue'),
+    },
+    {
+      name: 'Callendar',
+      path: '/callendar',
+      component: () => import('@/pages/Appointment/Callendar.vue'),
+    },
+    {
+      name: 'Appointmentrequests',
+      path: '/appointmentrequests',
+      component: () => import('@/pages/Appointment/Appointmentrequests.vue'),
     }
 
   ]
