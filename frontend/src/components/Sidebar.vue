@@ -210,16 +210,15 @@ const sidebarItems = ref([
 	{
 		icon: PillIcon,
 		label: 'Pharmacy',
-		hasSubmenu: true,
-		route: '/dashboard',
-		submenu: [
-			{
-				label: 'Medicine Inventory',
-				active: false,
-				route: '/pharmacy/inventory',
-			},
-			{ label: 'Orders', active: false, route: '/pharmacy/orders' },
-		],
+		route: '/pharmacy',
+		// submenu: [
+		// 	{
+		// 		label: 'Medicine Inventory',
+		// 		active: false,
+		// 		route: '/pharmacy/inventory',
+		// 	},
+		// 	{ label: 'Orders', active: false, route: '/pharmacy/orders' },
+		// ],
 	},
 	{
 		icon: BuildingIcon,
@@ -227,12 +226,11 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{
-				label: 'Blood Inventory',
-				active: false,
-				route: '/blood-bank/inventory',
-			},
-			{ label: 'Donors', active: false, route: '/blood-bank/donors' },
+			{ label: 'Blood Stock', active: false, route: '/bloodstock' },
+			{ label: 'Blood Donor', active: false, route: '/blooddonor' },
+			{ label: 'Blood Issued', active: false, route: '/bloodissued' },
+			{ label: 'Add Blood Unit', active: false, route: '/addbloodunit' },
+			{ label: 'Issue Blood', active: false, route: '/issueblood' },
 		],
 	},
 	{
@@ -241,8 +239,10 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'All Bills', active: false, route: '/billing/all' },
-			{ label: 'Generate Bill', active: false, route: '/billing/generate' },
+			{ label: 'Invoices List', active: false, route: '/invoicelist' },
+			{ label: 'Create Invoice', active: false, route: '/createinvoice' },
+			{ label: 'Payment History', active: false, route: '/paymenthistory' },
+			{ label: 'Insurance Claims', active: false, route: '/insuranceclaims' },
 		],
 	},
 	{
@@ -251,8 +251,9 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'All Departments', active: false, route: '/departments/all' },
-			{ label: 'Add Department', active: false, route: '/departments/add' },
+			{ label: 'Department List', active: false, route: '/departmentlist' },
+			{ label: 'Add Department', active: false, route: '/adddepartment' },
+			{ label: 'Services Offered', active: false, route: '/servicesoffered' },
 		],
 	},
 	{
@@ -262,11 +263,13 @@ const sidebarItems = ref([
 		route: '/dashboard',
 		submenu: [
 			{
-				label: 'Medical Equipment',
+				label: 'Inventory List',
 				active: false,
-				route: '/inventory/equipment',
+				route: '/inventorylist',
 			},
-			{ label: 'Supplies', active: false, route: '/inventory/supplies' },
+			{ label: 'Add Item', active: false, route: '/additem' },
+			{ label: 'Stock Alerts', active: false, route: '/stockalerts' },
+			{ label: 'Suppliers List', active: false, route: '/supplierslist' },
 		],
 	},
 	{
@@ -275,8 +278,10 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'All Staff', active: false, route: '/staff/all' },
-			{ label: 'Add Staff', active: false, route: '/staff/add' },
+			{ label: 'All Staff', active: false, route: '/allstaff' },
+			{ label: 'Add Staff', active: false, route: '/addstaff' },
+			{ label: 'Role & Permissions', active: false, route: '/role' },
+			{ label: 'Attendance', active: false, route: '/attendance' },
 		],
 	},
 	{
