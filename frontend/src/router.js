@@ -205,8 +205,77 @@ const routes = [
       name: 'Supplierslist',
       path: '/supplierslist',
       component: () => import('@/pages/Inventory/Supplierslist.vue'),
-    }
-
+    },
+    {
+      name: 'Allprescriptions',
+      path: '/allprescriptions',
+      component: () => import('@/pages/Prescriptions/Allprescriptions.vue'),
+    },
+    {
+      name: 'Createprescription',
+      path: '/createprescription',
+      component: () => import('@/pages/Prescriptions/Createprescription.vue'),
+    },
+    {
+      name: 'Medicinetemplate',
+      path: '/medicinetemplate',
+      component: () => import('@/pages/Prescriptions/Medicinetemplate.vue'),
+    },
+    {
+      name: 'Ambulancecalllist',
+      path: '/ambulancecalllist',
+      component: () => import('@/pages/Ambulance/Ambulancecalllist.vue'),
+    },
+    {
+      name: 'Ambulancelist',
+      path: '/ambulancelist',
+      component: () => import('@/pages/Ambulance/Ambulancelist.vue'),
+    },
+    {
+      name: 'Ambulancedetails',
+      path: '/ambulancedetails',
+      component: () => import('@/pages/Ambulance/Ambulancedetails.vue'),
+    },
+    {
+      name: 'Birthrecords',
+      path: '/birthrecords',
+      component: () => import('@/pages/Records/Birthrecords.vue'),
+    },
+    {
+      name: 'Deathrecords',
+      path: '/deathrecords',
+      component: () => import('@/pages/Records/Deathrecords.vue'),
+    },
+    {
+      name: 'Allotedrooms',
+      path: '/allotedrooms',
+      component: () => import('@/pages/RoomAllotment/Allotedrooms.vue'),
+    },
+    {
+      name: 'Newallotment',
+      path: '/newallotment',
+      component: () => import('@/pages/RoomAllotment/Newallotment.vue'),
+    },
+    {
+      name: 'Roomsbydepartment',
+      path: '/roomsbydepartment',
+      component: () => import('@/pages/RoomAllotment/Roomsbydepartment.vue'),
+    },
+    {
+      name: 'Addnewroom',
+      path: '/addnewroom',
+      component: () => import('@/pages/RoomAllotment/Addnewroom.vue'),
+    },
+    {
+      name: 'Doctorreviews',
+      path: '/doctorreviews',
+      component: () => import('@/pages/Reviews/Doctorreviews.vue'),
+    },
+    {
+      name: 'Patientreviews',
+      path: '/patientreviews',
+      component: () => import('@/pages/Reviews/Patientreviews.vue'),
+    },
   ]
   },
   // {
