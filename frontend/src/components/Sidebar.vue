@@ -184,12 +184,17 @@ const sidebarItems = ref([
 			{
 				label: 'All Prescriptions',
 				active: false,
-				route: '/prescriptions/all',
+				route: '/allprescriptions',
 			},
 			{
 				label: 'Create Prescription',
 				active: false,
-				route: '/prescriptions/create',
+				route: '/createprescription',
+			},
+			{
+				label: 'Medicine Templates',
+				active: false,
+				route: '/medicinetemplate',
 			},
 		],
 	},
@@ -200,11 +205,16 @@ const sidebarItems = ref([
 		route: '/dashboard',
 		submenu: [
 			{
-				label: 'Available Ambulances',
+				label: 'Ambulance Call List',
 				active: false,
-				route: '/ambulance/available',
+				route: '/ambulancecalllist',
 			},
-			{ label: 'Book Ambulance', active: false, route: '/ambulance/book' },
+			{ label: 'Ambulance List', active: false, route: '/ambulancelist' },
+			{
+				label: 'Ambulance Details',
+				active: false,
+				route: '/ambulancedetails',
+			},
 		],
 	},
 	{
@@ -290,8 +300,8 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'Patient Records', active: false, route: '/records/patients' },
-			{ label: 'Medical History', active: false, route: '/records/history' },
+			{ label: 'Birth Records', active: false, route: '/birthrecords' },
+			{ label: 'Death Records', active: false, route: '/deathrecords' },
 		],
 	},
 	{
@@ -300,8 +310,10 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'Available Rooms', active: false, route: '/rooms/available' },
-			{ label: 'Room Bookings', active: false, route: '/rooms/bookings' },
+			{ label: 'Alloted Rooms', active: false, route: '/allotedrooms' },
+			{ label: 'New Allotment', active: false, route: '/newallotment' },
+			{ label: 'Rooms by Department', active: false, route: '/roomsbydepartment' },
+			{ label: 'Add New Room', active: false, route: '/addnewroom' },
 		],
 	},
 	{
@@ -310,8 +322,8 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
-			{ label: 'Patient Reviews', active: false, route: '/reviews/patients' },
-			{ label: 'Doctor Reviews', active: false, route: '/reviews/doctors' },
+			{ label: 'Doctor Reviews', active: false, route: '/doctorreviews' },
+			{ label: 'Patient Reviews', active: false, route: '/patientreviews' },
 		],
 	},
 	{ icon: FileTextIcon, label: 'Feedback', route: '/feedback' },
