@@ -107,6 +107,7 @@ import {
 	StarIcon,
 	SettingsIcon,
 	FileTextIcon,
+	WorkflowIcon,
 } from 'lucide-vue-next'
 
 // Router
@@ -333,12 +334,24 @@ const sidebarItems = ref([
 		hasSubmenu: true,
 		route: '/dashboard',
 		submenu: [
+			{ label: 'Overview', active: false, route: '/overview' },
+
+			{
+				label: 'Appointment Reports',
+				active: false,
+				route: '/appointmentreport',
+			},
+			{
+				label: 'Inventory Reports',
+				active: false,
+				route: '/inventoryreport',
+			},
 			{
 				label: 'Financial Reports',
 				active: false,
-				route: '/reports/financial',
+				route: '/financialreport',
 			},
-			{ label: 'Patient Reports', active: false, route: '/reports/patients' },
+			{ label: 'Patient Visit Reports', active: false, route: '/patientvisitreport' },
 		],
 	},
 	{
@@ -351,6 +364,8 @@ const sidebarItems = ref([
 			{ label: 'User Management', active: false, route: '/settings/users' },
 		],
 	},
+	{ icon: WorkflowIcon, label: 'Task', route: '/task' },
+	{ icon: CalendarIcon, label: 'Calendar', route: '/calendar' },
 ])
 
 // Methods

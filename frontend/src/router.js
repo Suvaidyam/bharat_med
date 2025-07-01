@@ -276,7 +276,47 @@ const routes = [
       path: '/patientreviews',
       component: () => import('@/pages/Reviews/Patientreviews.vue'),
     },
-  ]
+    {
+      name: 'Feedback',
+      path: '/feedback',
+      component: () => import('@/pages/Feedback/Feedback.vue'),
+    },
+    {
+      name: 'Overview',
+      path: '/overview',
+      component: () => import('@/pages/Reports/Overview.vue'),
+    },
+    {
+      name: 'Appointmentreport',
+      path: '/appointmentreport',
+      component: () => import('@/pages/Reports/Appointmentreport.vue'),
+    },
+    {
+      name: 'Financialreport',
+      path: '/financialreport',
+      component: () => import('@/pages/Reports/Financialreport.vue'),
+    },
+    {
+      name: 'Pateintvisitreport',
+      path: '/patientvisitreport',
+      component: () => import('@/pages/Reports/Pateintvisitreport.vue'),
+    },
+    {
+      name: 'Inventoryreport',
+      path: '/inventoryreport',
+      component: () => import('@/pages/Reports/Inventoryreport.vue'),
+    },
+    {
+      name: 'Task',
+      path: '/task',
+      component: () => import('@/pages/Tasks/Tasks.vue'),
+    },
+    {
+      name: 'Calendar',
+      path: '/calendar',
+      component: () => import('@/pages/Calendar/Calendar.vue'),
+    }
+  ],
   },
   // {
   //   name: 'Patient',
